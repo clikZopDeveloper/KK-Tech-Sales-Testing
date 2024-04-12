@@ -6,6 +6,8 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -34,6 +36,7 @@ class AllLeadActivity : AppCompatActivity(), ApiResponseListner,
     GoogleApiClient.OnConnectionFailedListener,
     ConnectivityListener.ConnectivityReceiverListener {
     private var dealerDataList: List<DealerBean.Data>? = null
+    private lateinit var mAllAdapter: AllLeadAdapter
     private lateinit var binding: ActivityAllLeadBinding
     private lateinit var apiClient: ApiController
     var myReceiver: ConnectivityListener? = null
@@ -90,15 +93,37 @@ class AllLeadActivity : AppCompatActivity(), ApiResponseListner,
 
     fun handleAllLead(data: List<AllLeadDataBean.Data>) {
         binding.rcAllLead.layoutManager = LinearLayoutManager(this)
-        var mAdapter = AllLeadAdapter(this, data, intent.getStringExtra("leadStatus"), object :
+        mAllAdapter = AllLeadAdapter(this, data, intent.getStringExtra("leadStatus"), object :
             RvStatusClickListner {
             override fun clickPos(status: String, pos: Int) {
                 leadID = pos
                 apiLeadDetail(pos)
             }
         })
-        binding.rcAllLead.adapter = mAdapter
+        binding.rcAllLead.adapter = mAllAdapter
         // rvMyAcFiled.isNestedScrollingEnabled = false
+
+
+        binding.edSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                if (data != null) {
+                    mAllAdapter.filter.filter(s)
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                mAllAdapter.filter.filter(s)
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                mAllAdapter.filter.filter(s)
+                /* if (s.toString().trim { it <= ' ' }.length < 1) {
+                     ivClear.visibility = View.GONE
+                 } else {
+                     ivClear.visibility = View.GONE
+                 }*/
+            }
+        })
     }
 
     @SuppressLint("SuspiciousIndentation")

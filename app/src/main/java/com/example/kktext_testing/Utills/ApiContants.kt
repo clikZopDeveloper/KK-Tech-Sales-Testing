@@ -27,7 +27,8 @@ public class ApiContants {
         const val dayStatus = "dayStatus"
 
 ///////////////////Testing URL////////////////////////////////////////
-           const val BaseUrl="https://testing.kktechecoproducts.online/sale-manager-api/"//Testing URL
+           //const val BaseUrl="https://testing.kktechecoproducts.online/sale-manager-api/"//Testing URL
+           const val BaseUrl="https://sales.kktechecoproducts.online/sale-manager-api/"//Production URL
            const val ImageBaseUrl = "https://www.art.antimatterfit.com/"//Testing URL
            const val ImageBaseUrlWhyChoose = "https://www.art.antimatterfit.com/public/images/"//Testing URL
            const val VideoBaseUrl = "https://www.art.antimatterfit.com/"//Testing URL

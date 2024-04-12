@@ -183,6 +183,8 @@ data class LeadDetailBean(
             val dealerId: Int, // 3
             @SerializedName("dealer_name")
             val dealerName: String, // BHAGWATI BUILDING STORE
+             @SerializedName("discount_price")
+            val discountPrice: String, // BHAGWATI BUILDING STORE
             @SerializedName("id")
             val id: Int, // 24
             @SerializedName("is_dealer")

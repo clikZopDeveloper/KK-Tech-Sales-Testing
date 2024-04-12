@@ -54,7 +54,7 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
     var fromDate = ""
     var leadID = ""
     var customerTypeData = ""
-    var leadStatus = ""
+    var leadStatus = "PROCESSING"
     var leadPos = 0
     var dealerID = 0
     var projectType = "Completed"
@@ -62,13 +62,16 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
     val PERMISSION_CODE = 12345
     val CAMERA_PERMISSION_CODE1 = 123
     var SELECT_PICTURES1 = 1
-    private var quoteListID: MutableList<Any?>?=null
+    private var quoteListID: MutableList<Any?>? = null
     var file2: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_update_lead)
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        );
 
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         myReceiver = ConnectivityListener()
@@ -78,17 +81,17 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         binding.igToolbar.ivLogout.visibility = View.GONE
         binding.igToolbar.switchDayStart.visibility = View.GONE
         leadID = intent.getStringExtra("leadID")!!
-        if (intent.hasExtra("customerType")){
+        if (intent.hasExtra("customerType")) {
             customerTypeData = intent.getStringExtra("customerType")!!
-        }else{
-            customerTypeData=""
+        } else {
+            customerTypeData = ""
         }
 
-       // leadStatus = intent.getStringExtra("leadStatus")!!
-          requestPermission()
-    //    typeMode()
+        // leadStatus = intent.getStringExtra("leadStatus")!!
+        requestPermission()
+        //    typeMode()
         apiGetStatus()
-       // apiGetDealer()
+        // apiGetDealer()
         calendar = Calendar.getInstance();
         val hour: Int = calendar!!.get(Calendar.HOUR_OF_DAY)
         val min: Int = calendar!!.get(Calendar.MINUTE)
@@ -97,7 +100,12 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
 
         binding.apply {
             btnLeadToEnquiry.setOnClickListener {
-                startActivity(Intent(this@UpdateLeadActivity,InquiryActivity::class.java).putExtra("leadID",leadID))
+                startActivity(
+                    Intent(this@UpdateLeadActivity, InquiryActivity::class.java).putExtra(
+                        "leadID",
+                        leadID
+                    )
+                )
             }
 
             btnRFQ.setOnClickListener {
@@ -111,7 +119,7 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
                 apiSubmitLead()
             }
 
-            ivView.setOnClickListener {  }
+            ivView.setOnClickListener { }
 
             editTime.setOnClickListener {
                 val timePickerDialog = TimePickerDialog(
@@ -137,7 +145,8 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
                     this@UpdateLeadActivity,
                     { view, year, monthOfYear, dayOfMonth ->
                         //  dob.setText(dateofnews);
-                        val dateofnews = "${ year.toString()+ "-"+(monthOfYear + 1).toString()  + "-" + dayOfMonth.toString() }"
+                        val dateofnews =
+                            "${year.toString() + "-" + (monthOfYear + 1).toString() + "-" + dayOfMonth.toString()}"
 
                         //   val dateofnews = (monthOfYear + 1).toString() + "/" + dayOfMonth + "/" + year
                         editDate.setText(dateofnews)
@@ -149,8 +158,12 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
 
             btnSubmit.setOnClickListener {
                 if (leadStatus.equals("") && leadStatus.isNullOrEmpty()) {
-                    Toast.makeText(this@UpdateLeadActivity,"Please Select Status",Toast.LENGTH_SHORT).show()
-                }else{
+                    Toast.makeText(
+                        this@UpdateLeadActivity,
+                        "Please Select Status",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
                     apiUpdateLead()
                 }
                 /*  if (leadPos==3||leadPos==4){
@@ -283,7 +296,7 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
                     GetAllStatusBean::class.java
                 )
                 //   Toast.makeText(this, allStatusBean.msg, Toast.LENGTH_SHORT).show()
-                if (allStatusBean.error==false) {
+                if (allStatusBean.error == false) {
                     handleRcStatus(allStatusBean.data)
                 }
 
@@ -294,19 +307,19 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
                     ConvertedDealerBean::class.java
                 )
                 //   Toast.makeText(this, allStatusBean.msg, Toast.LENGTH_SHORT).show()
-                if (convertedDealerBean.error==false) {
-                    if (customerTypeData.equals("customer")){
-                        binding.inputDealer.visibility=View.VISIBLE
-                        binding.rcProduct.visibility=View.VISIBLE
-                        binding.btnSubmit.visibility=View.GONE
-                        binding.btnDealerSubmit.visibility=View.VISIBLE
-                        binding.btnSubmit.visibility=View.GONE
-                    }else{
-                        binding.inputDealer.visibility=View.GONE
-                        binding.rcProduct.visibility=View.GONE
-                        binding.btnSubmit.visibility=View.GONE
-                        binding.btnDealerSubmit.visibility=View.GONE
-                        binding.btnSubmit.visibility=View.VISIBLE
+                if (convertedDealerBean.error == false) {
+                    if (customerTypeData.equals("customer")) {
+                        binding.inputDealer.visibility = View.VISIBLE
+                        binding.rcProduct.visibility = View.VISIBLE
+                        binding.btnSubmit.visibility = View.GONE
+                        binding.btnDealerSubmit.visibility = View.VISIBLE
+                        binding.btnSubmit.visibility = View.GONE
+                    } else {
+                        binding.inputDealer.visibility = View.GONE
+                        binding.rcProduct.visibility = View.GONE
+                        binding.btnSubmit.visibility = View.GONE
+                        binding.btnDealerSubmit.visibility = View.GONE
+                        binding.btnSubmit.visibility = View.VISIBLE
                     }
 
 
@@ -314,8 +327,8 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
                 }
 
             }
-        }catch (e:Exception){
-            Log.d("error>>",e.localizedMessage)
+        } catch (e: Exception) {
+            Log.d("error>>", e.localizedMessage)
         }
 
     }
@@ -327,8 +340,8 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         var mAdapter = ConvertDealerProdListAdapter(this, leadProduct, object :
             RvListClickListner {
             override fun clickPos(status: MutableList<Any?>?, id: Int) {
-                Log.d("zxzxc",Gson().toJson(status))
-                quoteListID=status
+                Log.d("zxzxc", Gson().toJson(status))
+                quoteListID = status
             }
 
         })
@@ -350,7 +363,7 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
     fun setDealer(data: List<DealerBean.Data>) {
         val state = arrayOfNulls<String>(data.size)
         for (i in data.indices) {
-            state[i] = data.get(i).name+" ( "+data.get(i).phone+" ) "
+            state[i] = data.get(i).name + " ( " + data.get(i).phone + " ) "
         }
 
         binding.selectDealer.setAdapter(
@@ -363,7 +376,7 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         binding.selectDealer.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, id ->
 
             for (dealerBeanData in data) {
-                val name=dealerBeanData.name+" ( "+dealerBeanData.phone+" ) "
+                val name = dealerBeanData.name + " ( " + dealerBeanData.phone + " ) "
                 if (name.equals(
                         parent.getItemAtPosition(position).toString()
                     )
@@ -371,7 +384,7 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
                     dealerID = dealerBeanData.id
                     Log.d("StateID", "" + dealerBeanData.id)
                     binding.selectDealer.setText(parent.getItemAtPosition(position).toString())
-               //     apiDealerProduct(dealerBeanData.id)
+                    //     apiDealerProduct(dealerBeanData.id)
                     Toast.makeText(
                         applicationContext,
                         binding.selectDealer.getText().toString(),
@@ -389,30 +402,37 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         apiClient.progressView.hideLoader()
 
         Utility.showSnackBar(activity, errorMessage)
-        Log.d("error",errorMessage)
+        Log.d("error", errorMessage)
 
     }
 
     fun handleRcStatus(data: List<GetAllStatusBean.Data>) {
-        binding.rcStatus.layoutManager = GridLayoutManager(this,3)
+        binding.rcStatus.layoutManager = GridLayoutManager(this, 3)
         var mAdapter = UpdateAllStatusAdapter(this, data, object :
             RvStatusClickListner {
             override fun clickPos(status: String, pos: Int) {
-                if (status.equals("CALL SCHEDULED")||status.equals("VISIT SCHEDULED"))
-                    binding.llDateTimeSection.visibility=View.VISIBLE
-                else if (status.equals("CONVERTED")){
-
+                if (status.equals("CALL SCHEDULED") || status.equals("VISIT SCHEDULED")) {
+                    binding.llDateTimeSection.visibility = View.VISIBLE
+                    binding.rcProduct.visibility = View.GONE
+                    binding.btnDealerSubmit.visibility = View.GONE
+                    binding.inputDealer.visibility = View.GONE
+                } else if (status.equals("CONVERTED")) {
+                    binding.llDateTimeSection.visibility = View.GONE
+                    binding.rcProduct.visibility = View.VISIBLE
+                    binding.btnSubmit.visibility = View.GONE
+                    binding.btnDealerSubmit.visibility = View.VISIBLE
+                    binding.inputDealer.visibility = View.VISIBLE
                     apiConvertedLead()
-                }else{
-                    binding.llDateTimeSection.visibility=View.GONE
-                    binding.btnSubmit.visibility=View.VISIBLE
-                    binding.btnDealerSubmit.visibility=View.GONE
-                    binding.inputDealer.visibility=View.GONE
-                    binding.rcProduct.visibility=View.GONE
+                } else {
+                    binding.llDateTimeSection.visibility = View.GONE
+                    binding.btnSubmit.visibility = View.VISIBLE
+                    binding.btnDealerSubmit.visibility = View.GONE
+                    binding.inputDealer.visibility = View.GONE
+                    binding.rcProduct.visibility = View.GONE
                 }
 
-                leadStatus=status
-                leadPos=pos
+                leadStatus = status
+                leadPos = pos
 
             }
         })
@@ -422,14 +442,14 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
     }
 
     fun handleConvertedLead(data: List<GetAllStatusBean.Data>) {
-        binding.rcStatus.layoutManager = GridLayoutManager(this,3)
+        binding.rcStatus.layoutManager = GridLayoutManager(this, 3)
         var mAdapter = UpdateAllStatusAdapter(this, data, object :
             RvStatusClickListner {
             override fun clickPos(status: String, pos: Int) {
 
 
-                leadStatus=status
-                leadPos=pos
+                leadStatus = status
+                leadPos = pos
 
             }
         })
@@ -443,13 +463,14 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         startActivityForResult(intent, CAMERA_PERMISSION_CODE)
     }
 
-    fun requestPermission(){
+    fun requestPermission() {
         ActivityCompat.requestPermissions(
             this,
             arrayOf(
                 Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.READ_MEDIA_IMAGES),
+                Manifest.permission.READ_MEDIA_IMAGES
+            ),
             PERMISSION_CODE
         )
     }
@@ -460,12 +481,11 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode==PERMISSION_CODE){
-            if (grantResults[0]== PackageManager.PERMISSION_GRANTED && grantResults[0]== PackageManager.PERMISSION_GRANTED && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this,"Permission is Granted",Toast.LENGTH_SHORT).show()
+        if (requestCode == PERMISSION_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission is Granted", Toast.LENGTH_SHORT).show()
 
-            }
-            else{
+            } else {
                 requestPermission()
             }
         }
@@ -478,11 +498,9 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             intent.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(
-                Intent.createChooser(intent, "Choose Pictures")
-                , SELECT_PICTURES
+                Intent.createChooser(intent, "Choose Pictures"), SELECT_PICTURES
             )
-        }
-        else { // For latest versions API LEVEL 19+
+        } else { // For latest versions API LEVEL 19+
             var intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             intent.addCategory(Intent.CATEGORY_OPENABLE)
@@ -491,15 +509,17 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         }
     }
 
-    fun openCameraDialog(SELECT_PICTURES: Int,CAMERA_PERMISSION_CODE: Int) {
-        val dialog: Dialog = GeneralUtilities.openBootmSheetDailog(R.layout.dialog_camera, R.style.AppBottomSheetDialogTheme,
+    fun openCameraDialog(SELECT_PICTURES: Int, CAMERA_PERMISSION_CODE: Int) {
+        val dialog: Dialog = GeneralUtilities.openBootmSheetDailog(
+            R.layout.dialog_camera, R.style.AppBottomSheetDialogTheme,
             this
         )
         val ivClose = dialog.findViewById<ImageView>(R.id.ivClose)
         val llInternalPhoto = dialog.findViewById<View>(R.id.llInternalPhoto) as LinearLayout
         val llClickPhoto = dialog.findViewById<View>(R.id.llClickPhoto) as LinearLayout
 
-        llInternalPhoto.setOnClickListener { dialog.dismiss()
+        llInternalPhoto.setOnClickListener {
+            dialog.dismiss()
             requestPermission()
             uploadImage(SELECT_PICTURES)
         }
@@ -514,11 +534,11 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == SELECT_PICTURES1){
+        if (resultCode == Activity.RESULT_OK && requestCode == SELECT_PICTURES1) {
             if (data?.getClipData() != null) { // if multiple images are selected
                 var count = data.clipData?.itemCount
-                tvImageCount.visibility=View.VISIBLE
-                tvImageCount.text="$count Images"
+                tvImageCount.visibility = View.VISIBLE
+                tvImageCount.text = "$count Images"
                 Log.d("wewwe", "$count")
                 for (i in 0..count!! - 1) {
                     var imageUri: Uri = data.clipData?.getItemAt(i)!!.uri
@@ -528,36 +548,37 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
                     file2 = File(picturePath)
                     //val custImg = CustProdImgBean(file2)
                     imgList.add(file2!!)
-                 //   Log.d("MultiPicturePath", picturePath)
+                    //   Log.d("MultiPicturePath", picturePath)
                     Log.d("MultiPicturePath", Gson().toJson(cutomProdImgList))
                     //     iv_image.setImageURI(imageUri) Here you can assign your Image URI to the ImageViews
                 }
 
             } else if (data?.getData() != null) {   // if single image is selected
-                tvImageCount.visibility=View.GONE
+                tvImageCount.visibility = View.GONE
                 var imageUri: Uri = data.data!!
                 val picturePath: String = GeneralUtilities.getPath(
-                    applicationContext, imageUri)
+                    applicationContext, imageUri
+                )
                 file2 = File(picturePath)
                 val myBitmap = BitmapFactory.decodeFile(file2!!.absolutePath)
                 btnAadharFront.setImageBitmap(myBitmap)
                 imgList.add(file2!!)
-              /*  val custImg = CustProdImgBean(file2)
-                val arrlis:ArrayList<File>
-                cutomProdImgList.add(custImg)*/
+                /*  val custImg = CustProdImgBean(file2)
+                  val arrlis:ArrayList<File>
+                  cutomProdImgList.add(custImg)*/
                 Log.d("SinglePicturePath", picturePath)
                 //   iv_image.setImageURI(imageUri) Here you can assign the picked image uri to your imageview
             }
 
         }
-         if (requestCode == CAMERA_PERMISSION_CODE1) {
+        if (requestCode == CAMERA_PERMISSION_CODE1) {
             try {
-                Toast.makeText(this@UpdateLeadActivity,"sdfsd",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@UpdateLeadActivity, "sdfsd", Toast.LENGTH_SHORT).show()
 
                 val imageBitmap = data?.extras?.get("data") as Bitmap
                 btnAadharFront.setImageBitmap(imageBitmap)
-                val tempUri =GeneralUtilities.getImageUri(applicationContext, imageBitmap)
-                file2= File(GeneralUtilities.getRealPathFromURII(this,tempUri))
+                val tempUri = GeneralUtilities.getImageUri(applicationContext, imageBitmap)
+                file2 = File(GeneralUtilities.getRealPathFromURII(this, tempUri))
                 imgList.add(file2!!)
                 Log.e("Path", file2.toString())
 
@@ -569,15 +590,15 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         }
     }
 
-    fun openDialog(){
-        val builder = AlertDialog.Builder(this,R.style.CustomAlertDialog)
+    fun openDialog() {
+        val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
             .create()
-        val view = layoutInflater.inflate(R.layout.dialog_multiimage,null)
-        val  submit = view.findViewById<Button>(R.id.dialogDismiss_button)
-        val  editRemark = view.findViewById<TextInputEditText>(R.id.editRemark)
-          btnAadharFront = view.findViewById<ImageView>(R.id.btnAadharFront)
-        val  ivClose = view.findViewById<ImageView>(R.id.ivClose)
-          tvImageCount = view.findViewById<TextView>(R.id.tvImageCount)
+        val view = layoutInflater.inflate(R.layout.dialog_multiimage, null)
+        val submit = view.findViewById<Button>(R.id.dialogDismiss_button)
+        val editRemark = view.findViewById<TextInputEditText>(R.id.editRemark)
+        btnAadharFront = view.findViewById<ImageView>(R.id.btnAadharFront)
+        val ivClose = view.findViewById<ImageView>(R.id.ivClose)
+        tvImageCount = view.findViewById<TextView>(R.id.tvImageCount)
         builder.setView(view)
         ivClose.setOnClickListener {
             builder.dismiss()
@@ -587,8 +608,8 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
             apiRFQ(editRemark.text.toString())
         }
         btnAadharFront.setOnClickListener {
-          //  uploadImage(SELECT_PICTURES1)
-            openCameraDialog(SELECT_PICTURES1,CAMERA_PERMISSION_CODE1)
+            //  uploadImage(SELECT_PICTURES1)
+            openCameraDialog(SELECT_PICTURES1, CAMERA_PERMISSION_CODE1)
         }
 
         builder.setCanceledOnTouchOutside(false)
@@ -601,41 +622,43 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         builder.setType(MultipartBody.FORM)
         builder.addFormDataPart("lead_id", leadID)
         builder.addFormDataPart("remarks", remark)
- /*       builder.addFormDataPart("files[]", file2?.name,
-            RequestBody.create("multipart/form-data".toMediaTypeOrNull(),Gson().toJson(imgList)))*/
+        /*       builder.addFormDataPart("files[]", file2?.name,
+                   RequestBody.create("multipart/form-data".toMediaTypeOrNull(),Gson().toJson(imgList)))*/
 
-       /* builder.addFormDataPart("files[]", "img[" + 0 + "]"+System.currentTimeMillis(),
-            RequestBody.create("multipart/form-data".toMediaTypeOrNull(), Gson().toJson(imgList)))*/
+        /* builder.addFormDataPart("files[]", "img[" + 0 + "]"+System.currentTimeMillis(),
+             RequestBody.create("multipart/form-data".toMediaTypeOrNull(), Gson().toJson(imgList)))*/
 
-         for (i in 0 until imgList.size) {
-          builder.addFormDataPart("files[]", imgList.get(i).name,
-              RequestBody.create("multipart/form-data".toMediaTypeOrNull(), imgList.get(i)))
-      }
-
-       /* if (file != null) {
-            builder.addFormDataPart("image", file?.name,
-                RequestBody.create(MediaType.parse("multipart/form-data"), file))
-        }*/
-
-    /*    val mediaType = "text/plain".toMediaTypeOrNull()
-        val body: RequestBody = MultipartBody.Builder().setType(MultipartBody.FORM)
-            .addFormDataPart("lead_id", "25")
-            .addFormDataPart(
-                "files[]", "/C:/Users/LENOVO/Downloads/lead-ex-2.png",
-                create(
-                    "application/octet-stream".toMediaTypeOrNull(),
-                    File("/C:/Users/LENOVO/Downloads/lead-ex-2.png")
-                )
+        for (i in 0 until imgList.size) {
+            builder.addFormDataPart(
+                "files[]", imgList.get(i).name,
+                RequestBody.create("multipart/form-data".toMediaTypeOrNull(), imgList.get(i))
             )
-            .addFormDataPart(
-                "files[]", "/C:/Users/LENOVO/Downloads/lead-ex.png",
-                create(
-                    "application/octet-stream".toMediaTypeOrNull(),
-                    File("/C:/Users/LENOVO/Downloads/lead-ex.png")
+        }
+
+        /* if (file != null) {
+             builder.addFormDataPart("image", file?.name,
+                 RequestBody.create(MediaType.parse("multipart/form-data"), file))
+         }*/
+
+        /*    val mediaType = "text/plain".toMediaTypeOrNull()
+            val body: RequestBody = MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("lead_id", "25")
+                .addFormDataPart(
+                    "files[]", "/C:/Users/LENOVO/Downloads/lead-ex-2.png",
+                    create(
+                        "application/octet-stream".toMediaTypeOrNull(),
+                        File("/C:/Users/LENOVO/Downloads/lead-ex-2.png")
+                    )
                 )
-            )
-            .addFormDataPart("remarks", "asasdlfk")
-            .build()*/
+                .addFormDataPart(
+                    "files[]", "/C:/Users/LENOVO/Downloads/lead-ex.png",
+                    create(
+                        "application/octet-stream".toMediaTypeOrNull(),
+                        File("/C:/Users/LENOVO/Downloads/lead-ex.png")
+                    )
+                )
+                .addFormDataPart("remarks", "asasdlfk")
+                .build()*/
 
 
 
@@ -667,11 +690,13 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         SalesApp.setConnectivityListener(this)
         super.onResume()
     }
+
     override fun onDestroy() {
         super.onDestroy()
         // Start the LocationService when the app is closed
         startService(Intent(this, LocationService::class.java))
     }
+
     override fun onNetworkConnectionChange(isconnected: Boolean) {
         ApiContants.isconnectedtonetwork = isconnected
         GeneralUtilities.internetConnectivityAction(this, isconnected)

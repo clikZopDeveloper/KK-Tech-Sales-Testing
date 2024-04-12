@@ -3,7 +3,7 @@ package com.example.kktext_testing.Model
 
 import com.google.gson.annotations.SerializedName
 
-data class DashboardBean(
+data class dfdfd(
     @SerializedName("data")
     val `data`: Data,
     @SerializedName("error")

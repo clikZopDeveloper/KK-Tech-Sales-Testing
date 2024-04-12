@@ -190,18 +190,13 @@ class AddLeadActivity : AppCompatActivity(), ApiResponseListner,
             override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
                 if (checkedId == R.id.rbCustomer) {
                     custType = "customer"
-                  binding.scrollViewAddProd.visibility=View.VISIBLE
-                  binding.btnAddProduct.visibility=View.VISIBLE
                   binding.rcDealerProduct.visibility=View.GONE
+                  binding.llCustomerViews.visibility=View.VISIBLE
                   binding.inputDealer.visibility=View.GONE
-                  binding.inputClient.visibility=View.VISIBLE
                 } else if(checkedId == R.id.rbDealer) {
                     custType = "dealer"
-                    binding.scrollViewAddProd.visibility=View.VISIBLE
-                    binding.btnAddProduct.visibility=View.VISIBLE
-                    binding.rcDealerProduct.visibility=View.GONE
+                    binding.llCustomerViews.visibility=View.GONE
                     binding.inputDealer.visibility=View.VISIBLE
-                    binding.inputClient.visibility=View.GONE
                 }
             }
         })

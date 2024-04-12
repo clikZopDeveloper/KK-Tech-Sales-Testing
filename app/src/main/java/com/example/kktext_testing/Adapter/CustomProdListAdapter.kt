@@ -49,6 +49,7 @@ class CustomProdListAdapter(
         holder.tvDate.text = list[position].createdAt.toString()
         holder.tvPrice.text = ApiContants.currency+list[position].price.toString()
         holder.tvDelivered.text = list[position].isDelivered.toString()
+        holder.tvDisPrice.text = ApiContants.currency+list[position].discountPrice.toString()
 
         if (list[position].isDealer == 1){
             holder.tvtvDealerName.text = "Dealer Name : "
@@ -104,6 +105,7 @@ class CustomProdListAdapter(
         val tvtvDealerName: TextView = itemview.findViewById(R.id.tvtvDealerName)
         val tvValDealerName: TextView = itemview.findViewById(R.id.tvValDealerName)
         val tvPrice: TextView = itemview.findViewById(R.id.tvPrice)
+        val tvDisPrice: TextView = itemview.findViewById(R.id.tvDisPrice)
         val ivCheck: CheckBox = itemview.findViewById(R.id.ivCheck)
 
     }

@@ -78,21 +78,7 @@
                         android:layout_height="wrap_content" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                   android:id="@+id/inputClient"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Client">
 
-                    <AutoCompleteTextView
-                        android:id="@+id/stateClient"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
@@ -108,273 +94,295 @@
                         android:layout_height="wrap_content" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+<LinearLayout
+    android:id="@+id/llCustomerViews"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Source">
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:id="@+id/inputClient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select Client">
 
+        <AutoCompleteTextView
+            android:id="@+id/stateClient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                    <AutoCompleteTextView
-                        android:id="@+id/stateSource"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Plumber/Contractor">
-
-
-                    <AutoCompleteTextView
-                        android:id="@+id/stateInstaller"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Architect/Consultant">
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select Source">
 
 
-                    <AutoCompleteTextView
-                        android:id="@+id/stateArchitect"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+        <AutoCompleteTextView
+            android:id="@+id/stateSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select MEP">
+    </com.google.android.material.textfield.TextInputLayout>
 
-
-                    <AutoCompleteTextView
-                        android:id="@+id/stateMEP"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-                <CheckBox
-                    android:id="@+id/dealerCheck"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10dp"
-                    android:background="@color/light_grays"
-                    android:layout_marginTop="@dimen/_5dip"
-                    android:visibility="gone"
-                    android:text="Dealer Lead" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:visibility="gone"
-                    android:hint="Select Dealer">
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select Plumber/Contractor">
 
 
-                    <AutoCompleteTextView
-                        android:id="@+id/stateDealer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none" />
+        <AutoCompleteTextView
+            android:id="@+id/stateInstaller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-                <RadioGroup
-                    android:id="@+id/radioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/black_border"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/_10dp">
-
-                    <RadioButton
-                        android:id="@+id/rbCommercial"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="Commercial" />
-
-                    <RadioButton
-                        android:id="@+id/rbResidential"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10dp"
-                        android:text="Residential" />
-                    <RadioButton
-                        android:id="@+id/rbOthers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10dp"
-                        android:visibility="gone"
-                        android:text="Others" />
-
-                </RadioGroup>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Type"
-                    android:visibility="gone">
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select Architect/Consultant">
 
 
-                    <AutoCompleteTextView
-                        android:id="@+id/stateType"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none" />
+        <AutoCompleteTextView
+            android:id="@+id/stateArchitect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Category">
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select MEP">
 
 
-                    <AutoCompleteTextView
-                        android:id="@+id/stateCategory"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+        <AutoCompleteTextView
+            android:id="@+id/stateMEP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+    <CheckBox
+        android:id="@+id/dealerCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:background="@color/light_grays"
+        android:layout_marginTop="@dimen/_5dip"
+        android:visibility="gone"
+        android:text="Dealer Lead" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Sub Category">
-
-
-                    <AutoCompleteTextView
-                        android:id="@+id/stateSubCategory"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Property Stage">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/statePropertyStage"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:hint="Select Dealer">
 
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select State">
+        <AutoCompleteTextView
+            android:id="@+id/stateDealer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/black_border"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10dp">
+
+        <RadioButton
+            android:id="@+id/rbCommercial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Commercial" />
+
+        <RadioButton
+            android:id="@+id/rbResidential"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10dp"
+            android:text="Residential" />
+        <RadioButton
+            android:id="@+id/rbOthers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10dp"
+            android:visibility="gone"
+            android:text="Others" />
+
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select Type"
+        android:visibility="gone">
 
 
-                    <AutoCompleteTextView
-                        android:id="@+id/stateselector"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+        <AutoCompleteTextView
+            android:id="@+id/stateType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select City">
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select Category">
 
 
-                    <AutoCompleteTextView
-                        android:id="@+id/cityselector"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+        <AutoCompleteTextView
+            android:id="@+id/stateCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Enter Address">
+    </com.google.android.material.textfield.TextInputLayout>
 
-                    <!--this is the actual edit text which takes the input-->
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select Sub Category">
 
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10dp"
-                    android:layout_marginTop="@dimen/_10dp"
-                    android:hint="Enter GST Number">
 
-                    <!--this is the actual edit text which takes the input-->
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editGSTNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+        <AutoCompleteTextView
+            android:id="@+id/stateSubCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="Enter Remark">
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select Property Stage">
 
-                    <!--this is the actual edit text which takes the input-->
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editRemark"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+        <AutoCompleteTextView
+            android:id="@+id/statePropertyStage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select State">
+
+
+        <AutoCompleteTextView
+            android:id="@+id/stateselector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Select City">
+
+
+        <AutoCompleteTextView
+            android:id="@+id/cityselector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Address">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:hint="Enter GST Number">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editGSTNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Remark">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editRemark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcDealerProduct"
@@ -387,13 +395,10 @@
                     tools:listitem="@layout/item_dealer" />
 
                 <!--     android:text="@={loginViewModel.mobileNo}"-->
-       <ScrollView
-           android:id="@+id/scrollViewAddProd"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:fillViewport="true">
+
 
            <LinearLayout
+               android:id="@+id/scrollViewAddProd"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:orientation="vertical">
@@ -646,16 +651,13 @@
                    android:textSize="16sp" />
 
            </LinearLayout>
-       </ScrollView>
-
-
-                <!-- android:onClick="@{()->loginViewModel.submit()}"-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/_10dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -687,6 +689,9 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
+                <!-- android:onClick="@{()->loginViewModel.submit()}"-->
+
+
 
             </LinearLayout>
 
