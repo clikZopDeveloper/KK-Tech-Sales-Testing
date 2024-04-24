@@ -399,7 +399,6 @@ class AddLeadActivity : AppCompatActivity(), ApiResponseListner,
                         apiSubCatory(projectCatID)
                     })
                 }
-
             }
 
             if (tag == ApiContants.getBusinessCategory) {
@@ -590,8 +589,6 @@ class AddLeadActivity : AppCompatActivity(), ApiResponseListner,
 
             }
 
-
-
             if (tag == ApiContants.getCity) {
                 val cityBean = apiClient.getConvertIntoModel<CityBean>(
                     jsonElement.toString(),
@@ -659,6 +656,7 @@ class AddLeadActivity : AppCompatActivity(), ApiResponseListner,
 
                   }
                  */
+            
             if (tag == ApiContants.getSource) {
                 val sourceBean = apiClient.getConvertIntoModel<SourceBean>(
                     jsonElement.toString(),
