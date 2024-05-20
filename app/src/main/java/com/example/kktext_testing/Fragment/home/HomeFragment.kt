@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kktext_testing.Activity.*
-import com.example.kktext_testing.Adapter.AllGeneratedQuoteAdapter
 import com.example.kktext_testing.Adapter.DashboardAdapter
 import com.example.kktext_testing.Adapter.NotificationAdapter
 import com.example.kktext_testing.ApiHelper.ApiController

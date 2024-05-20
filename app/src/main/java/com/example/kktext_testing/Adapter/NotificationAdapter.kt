@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kktext_testing.Model.AllRequestedQuoteBean
 import com.example.kktext_testing.Model.DashboardBean
 import com.example.kktext_testing.R
 import com.example.kktext_testing.Utills.RvStatusClickListner
 
 
-class NotificationAdapter(var context: Activity, var list: List<DashboardBean.Data.Followup>,var rvClickListner: RvStatusClickListner) : RecyclerView.Adapter<NotificationAdapter.MyViewHolder>(){
+class NotificationAdapter(var context: Activity, var list: List<DashboardBean.Data.Followup>, var rvClickListner: RvStatusClickListner) : RecyclerView.Adapter<NotificationAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder { // infalte the item Layout
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_notification, parent, false)

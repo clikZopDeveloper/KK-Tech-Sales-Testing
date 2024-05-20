@@ -7,57 +7,56 @@ data class DashboardBean(
     @SerializedName("data")
     val `data`: Data,
     @SerializedName("error")
-    val error: Boolean, // false
+    val error: Boolean,
     @SerializedName("msg")
-    val msg: String, // Data found
+    val msg: String,
     @SerializedName("0")
-    val x0: String // leads
+    val x0: String
 ) {
     data class Data(
         @SerializedName("booked")
-        val booked: String, // 0
+        val booked: String,
         @SerializedName("call_scheduled")
-        val callScheduled: String, // 87
+        val callScheduled: String,
         @SerializedName("cancelled")
-        val cancelled: String, // 0
+        val cancelled: String,
         @SerializedName("completed")
-        val completed: String, // 4
+        val completed: String,
         @SerializedName("converted_leads")
-        val convertedLeads: String, // 3
+        val convertedLeads: String,
         @SerializedName("executive_count")
-        val executiveCount: Int, // 0
+        val executiveCount: Int,
         @SerializedName("followups")
-        val followups: List<Followup>,
+        val followups: List<DashboardBean.Data.Followup>,
         @SerializedName("interested_leads")
-        val interestedLeads: String, // 0
+        val interestedLeads: String,
         @SerializedName("lost_leads")
-        val lostLeads: String, // 2
+        val lostLeads: String,
         @SerializedName("monthly_sale")
-        val monthlySale: Double, // 122928.66
+        val monthlySale: Double,
         @SerializedName("monthly_sale_executive")
-        val monthlySaleExecutive: Double, // 122928.66
+        val monthlySaleExecutive: Double,
         @SerializedName("new_leads")
-        val newLeads: String, // 5
+        val newLeads: String,
         @SerializedName("Partial")
-        val partial: String, // 7
+        val partial: String,
         @SerializedName("pending_leads")
-        val pendingLeads: String, // 0
+        val pendingLeads: String,
         @SerializedName("processing_leads")
-        val processingLeads: String, // 7
+        val processingLeads: String,
         @SerializedName("sm_newLeads")
-        val smNewLeads: String, // 0
+        val smNewLeads: String,
         @SerializedName("total_leads")
-        val totalLeads: Int, // 281
+        val totalLeads: Int,
         @SerializedName("visit_done")
-        val visitDone: String, // 57
+        val visitDone: String,
         @SerializedName("visit_scheduled")
-        val visitScheduled: String, // 104
+        val visitScheduled: String,
         @SerializedName("year_sale_executive")
-        val yearSaleExecutive: Int, // 1061668
+        val yearSaleExecutive: Double,
         @SerializedName("yearly_sale")
-        val yearlySale: Int // 1061668
-    )
-    {
+        val yearlySale: Double
+    ) {
         data class Followup(
             @SerializedName("id")
             val id: Int, // 2764
