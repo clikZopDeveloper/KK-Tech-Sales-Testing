@@ -60,6 +60,8 @@ data class SearchBean(
             val finalPrice: Any, // null
             @SerializedName("gst")
             val gst: String, // null
+            @SerializedName("customer_type")
+            val customerType: String, // customer
             @SerializedName("id")
             val id: Int, // 26
             @SerializedName("is_allocated")

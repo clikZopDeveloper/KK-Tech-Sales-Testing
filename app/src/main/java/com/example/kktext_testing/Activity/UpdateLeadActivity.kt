@@ -86,7 +86,7 @@ class UpdateLeadActivity : AppCompatActivity(), ApiResponseListner,
         } else {
             customerTypeData = ""
         }
-
+Log.d("zxczxc",leadID+"\n"+customerTypeData)
         // leadStatus = intent.getStringExtra("leadStatus")!!
         requestPermission()
         //    typeMode()

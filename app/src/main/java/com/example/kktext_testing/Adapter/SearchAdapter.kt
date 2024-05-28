@@ -45,7 +45,13 @@ class SearchAdapter(var context: Activity, var list: List<SearchBean.Data.Lead>,
         holder.ivUpdate.setOnClickListener {
           context.startActivity(Intent(context,UpdateLeadActivity::class.java)
                .putExtra("leadID",list[position].id.toString())
+               .putExtra("customerType",list[position].customerType.toString())
                .putExtra("leadStatus",leadStatus.toString()))
+
+           /* context.startActivity(Intent(context,UpdateLeadActivity::class.java)
+                .putExtra("leadID",mFilteredList[position].id.toString())
+                .putExtra("customerType",mFilteredList[position].customerType.toString())
+                .putExtra("leadStatus",leadStatus.toString()))*/
         }
 
         holder.ivEditLead.setOnClickListener {
