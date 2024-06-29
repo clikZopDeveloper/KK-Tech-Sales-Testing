@@ -53,7 +53,7 @@ class CustomProdListAdapter(
 
         if (list[position].isDealer == 1){
             holder.tvtvDealerName.text = "Dealer Name : "
-            holder.tvValDealerName.text = list[position].dealerName.toString()
+            holder.tvValDealerName.text = list[position].dealerName?.toString()
         }else{
             holder.tvtvDealerName.text = "Company : "
             holder.tvValDealerName.text = "KK Tech Sales"

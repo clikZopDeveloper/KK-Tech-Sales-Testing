@@ -79,6 +79,7 @@ class AllLeadAdapter(var context: Activity, var list: List<AllLeadDataBean.Data>
         holder.itemView.setOnClickListener {
             rvClickListner.clickPos(mFilteredList[position].status,mFilteredList[position].id)
         }
+
     }
 
     override fun getItemCount(): Int {

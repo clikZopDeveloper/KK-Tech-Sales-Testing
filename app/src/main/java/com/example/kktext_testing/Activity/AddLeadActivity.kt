@@ -364,6 +364,11 @@ class AddLeadActivity : AppCompatActivity(), ApiResponseListner,
                     ProjectCategoryBean::class.java
                 )
                 if (projectCategoryBean.error == false) {
+                  /*  val items = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
+                    val adapters = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, items)
+                    binding.stateCategoryy.setAdapter(adapters)
+*/
+
                     val state = arrayOfNulls<String>(projectCategoryBean.data.size)
                     for (i in projectCategoryBean.data.indices) {
                         //Storing names to string array
@@ -376,7 +381,7 @@ class AddLeadActivity : AppCompatActivity(), ApiResponseListner,
                             android.R.layout.simple_list_item_1, state
                         )
                     )
-
+                    binding.stateCategory.threshold=1
                     binding.stateCategory.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, id ->
                         binding.stateCategory.setText(parent.getItemAtPosition(position).toString())
 
@@ -463,6 +468,8 @@ class AddLeadActivity : AppCompatActivity(), ApiResponseListner,
                             android.R.layout.simple_list_item_1, state
                         )
                     )
+
+                    binding.stateSubCategory.threshold=1
                     binding.stateSubCategory.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, id ->
                         binding.stateSubCategory.setText(
                             parent.getItemAtPosition(position).toString()
@@ -479,7 +486,7 @@ class AddLeadActivity : AppCompatActivity(), ApiResponseListner,
                                 Log.d("StateID", "" + subCatBean.id)
                             }
                         }
-
+                        apiSubCatory(projectCatID)
                         Toast.makeText(
                             applicationContext,
                             binding.stateSubCategory.getText().toString(),
@@ -489,7 +496,7 @@ class AddLeadActivity : AppCompatActivity(), ApiResponseListner,
                 }
 
 
-                //  apiSubCatory(projectCatID)
+
 
             }
 

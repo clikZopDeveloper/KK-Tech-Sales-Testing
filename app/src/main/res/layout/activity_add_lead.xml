@@ -272,6 +272,14 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--<com.example.kktext_testing.Utills.CustomAutoCompleteTextView
+        android:id="@+id/stateCategoryy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type something"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:inputType="text" />-->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
@@ -284,7 +292,10 @@
         <AutoCompleteTextView
             android:id="@+id/stateSubCategory"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:cursorVisible="true"
+            android:focusableInTouchMode="false"
+            android:focusable="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -302,7 +313,6 @@
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -335,6 +345,7 @@
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -350,6 +361,7 @@
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
